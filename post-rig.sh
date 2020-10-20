@@ -6,8 +6,7 @@ echo "# ██╔═══╝ ██║   ██║╚════██║   �
 echo "# ██║     ╚██████╔╝███████║   ██║      ██║  ██║██║╚██████╔╝"
 echo "# ╚═╝      ╚═════╝ ╚══════╝   ╚═╝      ╚═╝  ╚═╝╚═╝ ╚═════╝ "
 echo "# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
-
 #todo
-#1) Throw fancy success message
-#2) Verify wallet address
-#3) Provide miner start option
+# 1) Throw fancy success message
+# 2) Verify wallet address
+# 3) Provide miner start option
