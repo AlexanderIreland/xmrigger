@@ -158,13 +158,13 @@ function execute-make-generic () {
 }
 
 # Execute make with make with generic sysctl -n hw.ncpu - for FreeBSD
-function execute-make-generic () {
+function execute-make-hw-ncpu-variants () {
   $MAKE_CORE_COUNT=$(sysctl -n hw.ncpu)
   make -j$MAKE_CORE_COUNT
 }
 
 # Execute make with make with generic sysctl -n hw.logicalcpu - for MacOS
-function execute-make-generic () {
+function execute-make-hw-logical-cpu-variants () {
   $MAKE_CORE_COUNT=$(sysctl -n hw.logicalcpu)
   make -j$MAKE_CORE_COUNT
 }
