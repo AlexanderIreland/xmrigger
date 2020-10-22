@@ -57,6 +57,7 @@ function full-build-ubuntu () {
 xmrigger-packages-ubuntu
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
+create-build-dir
 config-cmake-ubuntu
 execute-make-generic 
 }
@@ -139,6 +140,11 @@ function config-cmake-osx-64 () {
 # Will produce a 96-bit universal binary out for OSX
 function config-cmake-osx-86 () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64;i386' 
+}
+
+# Make build dir and relocate into it
+function create-build-dir () {
+  cd /opt/xmrig && mkdir build && cd build
 }
 
 # Execute cmake and pray
