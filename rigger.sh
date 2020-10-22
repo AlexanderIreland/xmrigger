@@ -115,6 +115,7 @@ function config-cmake-macos () {
 function config-cmake-ubuntu () { 
   # Below looks to cause issues if invoked by default on an arm-variant CPU arch
   # CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  echo "Bash hates empty functions - holding the fort"
 }
 function config-cmake-windows-msys2 () { 
   CMAKE_ARGS=$CMAKE_ARGS"-G Visual Studio 16 2019 -A x64 -DXMRIG_DEPS='$MSYS_GCC_64_DIR'" 
