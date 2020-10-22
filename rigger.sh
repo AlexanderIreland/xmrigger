@@ -52,8 +52,6 @@ MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 
-full-build-ubuntu
-
 # main stub test
 function full-build-ubuntu () {
 xmrigger-packages-ubuntu
@@ -170,3 +168,9 @@ function execute-make-generic () {
   $MAKE_CORE_COUNT=$(sysctl -n hw.logicalcpu)
   make -j$MAKE_CORE_COUNT
 }
+
+####################
+# execution begins #
+####################
+
+full-build-ubuntu
