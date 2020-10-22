@@ -57,6 +57,7 @@ function full-build-ubuntu () {
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
 config-cmake-ubuntu
+execute-cmake-generic
 execute-make-generic 
 }
 
@@ -144,7 +145,7 @@ function config-cmake-osx-86 () {
 }
 
 # Execute cmake and pray
-function execute-cmake () { 
+function execute-cmake-generic () { 
   cmake .. $CMAKE_ARGS 
 }
 
