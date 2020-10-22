@@ -54,7 +54,6 @@ OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 
 # main stub test
 function full-build-ubuntu () {
-xmrigger-packages-ubuntu
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
 create-build-dir
@@ -83,7 +82,11 @@ function xmrigger-packages-ubuntu () {
 
 # Clone XMRig repo - Linux generic - clean dir
 function xmr-clone-repo-clean () { 
-  cd /opt/ && rm -rf /opt/xmrig && git clone https://github.com/xmrig/xmrig && mkdir xmrig/build && cd xmrig/build 
+  cd /opt/
+  rm -rf /opt/xmrig
+  git clone https://github.com/xmrig/xmrig
+  mkdir /opt/xmrig/build
+  cd /opt/xmrig/build 
 }
 # Clone XMRig repo - Linux generic - no clean
 function xmr-clone-repo () { 
@@ -157,7 +160,7 @@ function execute-cmake-vs2019 () {
   cmake --build . --config Release 
 }
 
-# Execute make with generic nproc arg - for Alpine, Arch, Centos7, Centos8, Debian, Fedora, Manjaro, Windows /w MSYS2
+# Execute make with generic nproc arg - for Alpine, Arch, Centos7, Centos8, Debian, Fedora, Manjaro, Ubuntu Windows /w MSYS2
 function execute-make-generic () {
   MAKE_CORE_COUNT=$(nproc)
   make -j$MAKE_CORE_COUNT
