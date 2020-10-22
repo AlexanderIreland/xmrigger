@@ -146,6 +146,7 @@ function config-cmake-osx-86 () {
 
 # Execute cmake and pray
 function execute-cmake-generic () { 
+  pwd && pwd && pwd #something broke here, breakpoint
   cmake .. $CMAKE_ARGS 
 }
 
