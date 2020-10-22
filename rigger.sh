@@ -51,12 +51,15 @@ MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default
 MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 
+full-build-ubuntu
+
 # main stub test
+function full-build-ubuntu {
 xmrigger-packages-ubuntu
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
 config-cmake-ubuntu
-execute-make-generic
+execute-make-generic}
 
 # Pull pre-requisite packages for Alpine
 
