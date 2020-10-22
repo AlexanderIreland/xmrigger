@@ -1,2 +1,2 @@
 # xmrigger
-Easily install XMRIG on any device/architecture
+Easily install XMRIG on any device/OS/architecture
