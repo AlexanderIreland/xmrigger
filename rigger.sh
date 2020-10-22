@@ -44,12 +44,13 @@ echo "#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 
 # Load vars
 CMAKE_ARGS="..."
-CUDA_TOOLKIT_DIR="c:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.0" #default
+CUDA_TOOLKIT_DIR="c:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.0" #default - bless fwdslash
 MAKE_CORE_COUNT=1
-MSVS2019_GCC_64_DIR="c:\xmrig-deps\msvc2019\x64" #default
-MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default
-MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default
+MSVS2019_GCC_64_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
+MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
+MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
+OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 
 full-build-ubuntu
 
@@ -59,7 +60,7 @@ xmrigger-packages-ubuntu
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
 config-cmake-ubuntu
-execute-make-generic}
+execute-make-generic }
 
 # Pull pre-requisite packages for Alpine
 
@@ -74,44 +75,44 @@ execute-make-generic}
 # Pull pre-requisite packages for MacOS
 
 # Pull pre-requisite packages for Ubuntu
-function xmrigger-packages-ubuntu {sudo apt-get install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev}
+function xmrigger-packages-ubuntu { sudo apt-get install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev }
 
 # Pull pre-requisite packages for Windows
 
 # Clone XMRig repo - Linux generic - clean dir
-function xmr-clone-repo-clean {cd /opt/ && rm -rf /opt/xmrig && git clone https://github.com/xmrig/xmrig && mkdir xmrig/build && cd xmrig/build}
+function xmr-clone-repo-clean { cd /opt/ && rm -rf /opt/xmrig && git clone https://github.com/xmrig/xmrig && mkdir xmrig/build && cd xmrig/build }
 # Clone XMRig repo - Linux generic - no clean
-function xmr-clone-repo {cd /opt/ && git clone https://github.com/xmrig/xmrig}
+function xmr-clone-repo { cd /opt/ && git clone https://github.com/xmrig/xmrig }
 
 # Injecting os-specific arguments for cmake
-function config-cmake-alpine {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
-function config-cmake-centos7 {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
-function config-cmake-centos8 {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
-function config-cmake-fedora {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
-function config-cmake-freebsd {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
-function config-cmake-macos {CMAKE_ARGS=$CMAKE_ARGS"-DOPENSSL_ROOT_DIR=/usr/local/opt/openssl"}
-function config-cmake-ubuntu {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
-function config-cmake-windows-msys2 {CMAKE_ARGS=$CMAKE_ARGS"-G Visual Studio 16 2019 -A x64 -DXMRIG_DEPS='$MSYS_GCC_64_DIR'"}
-function config-cmake-windows-vs2019 {CMAKE_ARGS=$CMAKE_ARGS' -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS="$MSVS2019_XMRIGDEPS_DIR"'}
-function config-cmake-windows-vs2019-cuda-support {CMAKE_ARGS=$CMAKE_ARGS' -G "Visual Studio 16 2019" -A x64 -DCUDA_TOOLKIT_ROOT_DIR="$CUDA_TOOLKIT_DIR"'}
+function config-cmake-alpine { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' }
+function config-cmake-centos7 { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' }
+function config-cmake-centos8 { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' }
+function config-cmake-fedora { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' }
+function config-cmake-freebsd { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' }
+function config-cmake-macos { CMAKE_ARGS=$CMAKE_ARGS"-DOPENSSL_ROOT_DIR=OSX_OPENSSL_DIR" }
+function config-cmake-ubuntu { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' }
+function config-cmake-windows-msys2 { CMAKE_ARGS=$CMAKE_ARGS"-G Visual Studio 16 2019 -A x64 -DXMRIG_DEPS='$MSYS_GCC_64_DIR'" }
+function config-cmake-windows-vs2019 { CMAKE_ARGS=$CMAKE_ARGS' -G "Visual Studio 16 2019" -A x64 -DXMRIG_DEPS="$MSVS2019_XMRIGDEPS_DIR"' }
+function config-cmake-windows-vs2019-cuda-support { CMAKE_ARGS=$CMAKE_ARGS' -G "Visual Studio 16 2019" -A x64 -DCUDA_TOOLKIT_ROOT_DIR="$CUDA_TOOLKIT_DIR"' }
 
 # Injecting cpu-arch arguments for cmake
-function config-cmake-arm {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm'}
+function config-cmake-arm { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm' }
 
 # Will produce a 32-bit binary out for OSX
-function config-cmake-osx-i386 {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=i386'}
+function config-cmake-osx-i386 { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=i386' }
 
 # Will produce a 64-bit binary out for OSX
-function config-cmake-osx-64 {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64'}
+function config-cmake-osx-64 { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64' }
 
 # Will produce a 96-bit universal binary out for OSX
-function config-cmake-osx-86 {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64;i386'}
+function config-cmake-osx-86 { CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64;i386' }
 
 # Execute cmake and pray
-function execute-cmake {cmake .. $CMAKE_ARGS}
+function execute-cmake { cmake .. $CMAKE_ARGS }
 
 # Execute cmake for VS2019
-function execute-cmake-vs2019 {cmake --build . --config Release}
+function execute-cmake-vs2019 { cmake --build . --config Release }
 
 # Execute make with generic nproc arg - for Alpine, Arch, Centos7, Centos8, Debian, Fedora, Manjaro, Windows /w MSYS2
 function execute-make-generic {
