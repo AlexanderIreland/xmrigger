@@ -56,7 +56,6 @@ OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 function full-build-ubuntu () {
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
-create-build-dir
 config-cmake-ubuntu
 execute-make-generic 
 }
@@ -83,10 +82,9 @@ function xmrigger-packages-ubuntu () {
 # Clone XMRig repo - Linux generic - clean dir
 function xmr-clone-repo-clean () { 
   cd /opt/
-  rm -rf /opt/xmrig
-  git clone https://github.com/xmrig/xmrig
-  mkdir /opt/xmrig/build
-  cd /opt/xmrig/build 
+  rm -rf /opt/xmrig/
+  git clone https://github.com/xmrig/xmrig.git
+  mkdir xmrig/build && cd xmrig/build
 }
 # Clone XMRig repo - Linux generic - no clean
 function xmr-clone-repo () { 
@@ -143,11 +141,6 @@ function config-cmake-osx-64 () {
 # Will produce a 96-bit universal binary out for OSX
 function config-cmake-osx-86 () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64;i386' 
-}
-
-# Make build dir and relocate into it
-function create-build-dir () {
-  cd /opt/xmrig && mkdir build && cd build
 }
 
 # Execute cmake and pray
