@@ -113,7 +113,8 @@ function config-cmake-macos () {
   CMAKE_ARGS=$CMAKE_ARGS"-DOPENSSL_ROOT_DIR=OSX_OPENSSL_DIR" 
 }
 function config-cmake-ubuntu () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  # Below looks to cause issues if invoked by default on an arm-variant CPU arch
+  # CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
 }
 function config-cmake-windows-msys2 () { 
   CMAKE_ARGS=$CMAKE_ARGS"-G Visual Studio 16 2019 -A x64 -DXMRIG_DEPS='$MSYS_GCC_64_DIR'" 
