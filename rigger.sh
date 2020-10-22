@@ -43,7 +43,7 @@ echo "#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 #  7.c) MacOS: make -j$(sysctl -n hw.logicalcpu)
 
 # Load vars
-CMAKE_ARGS="..."
+CMAKE_ARGS=""
 CUDA_TOOLKIT_DIR="c:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.0" #default - bless fwdslash
 MAKE_CORE_COUNT=1
 MSVS2019_GCC_64_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
