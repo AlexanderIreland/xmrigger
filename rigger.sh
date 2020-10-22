@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "#  ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗"
+echo "# ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗"
 echo "# ╚██╗██╔╝████╗ ████║██╔══██╗██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗"
 echo "#  ╚███╔╝ ██╔████╔██║██████╔╝██║██║  ███╗██║  ███╗█████╗  ██████╔╝"
 echo "#  ██╔██╗ ██║╚██╔╝██║██╔══██╗██║██║   ██║██║   ██║██╔══╝  ██╔══██╗"
@@ -51,6 +51,13 @@ MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default
 MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 
+# main stub test
+xmrigger-packages-ubuntu
+xmr-clone-repo-clean
+xmrigger-packages-ubuntu
+config-cmake-ubuntu
+execute-make-generic
+
 # Pull pre-requisite packages for Alpine
 
 # Pull pre-requisite packages for Centos7
@@ -63,12 +70,15 @@ MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 
 # Pull pre-requisite packages for MacOS
 
+# Pull pre-requisite packages for Ubuntu
+function xmrigger-packages-ubuntu {sudo apt-get install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev}
+
 # Pull pre-requisite packages for Windows
 
 # Clone XMRig repo - Linux generic - clean dir
-function xmr-clone-repo-clean {cd /opt/ && rm -rf /opt/xmrig && git clone https://github.com/xmrig/xmrig}
+function xmr-clone-repo-clean {cd /opt/ && rm -rf /opt/xmrig && git clone https://github.com/xmrig/xmrig && mkdir xmrig/build && cd xmrig/build}
 # Clone XMRig repo - Linux generic - no clean
-function xmr-clone-repo-clean {cd /opt/ && git clone https://github.com/xmrig/xmrig}
+function xmr-clone-repo {cd /opt/ && git clone https://github.com/xmrig/xmrig}
 
 # Injecting os-specific arguments for cmake
 function config-cmake-alpine {CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux'}
