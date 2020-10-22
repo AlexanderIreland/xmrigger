@@ -153,19 +153,19 @@ function execute-cmake-vs2019 () {
 
 # Execute make with generic nproc arg - for Alpine, Arch, Centos7, Centos8, Debian, Fedora, Manjaro, Windows /w MSYS2
 function execute-make-generic () {
-  $MAKE_CORE_COUNT=$(nproc)
+  MAKE_CORE_COUNT=$(nproc)
   make -j$MAKE_CORE_COUNT
 }
 
 # Execute make with make with generic sysctl -n hw.ncpu - for FreeBSD
 function execute-make-hw-ncpu-variants () {
-  $MAKE_CORE_COUNT=$(sysctl -n hw.ncpu)
+  MAKE_CORE_COUNT=$(sysctl -n hw.ncpu)
   make -j$MAKE_CORE_COUNT
 }
 
 # Execute make with make with generic sysctl -n hw.logicalcpu - for MacOS
 function execute-make-hw-logical-cpu-variants () {
-  $MAKE_CORE_COUNT=$(sysctl -n hw.logicalcpu)
+  MAKE_CORE_COUNT=$(sysctl -n hw.logicalcpu)
   make -j$MAKE_CORE_COUNT
 }
 
