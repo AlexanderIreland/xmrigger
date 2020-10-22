@@ -57,6 +57,7 @@ function full-build-ubuntu () {
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
 config-cmake-ubuntu
+config-cmake-arm
 execute-cmake-generic
 execute-make-generic 
 }
