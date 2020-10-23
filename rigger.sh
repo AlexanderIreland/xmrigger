@@ -1,11 +1,4 @@
 #!/bin/bash
-echo "# ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗"
-echo "# ╚██╗██╔╝████╗ ████║██╔══██╗██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗"
-echo "#  ╚███╔╝ ██╔████╔██║██████╔╝██║██║  ███╗██║  ███╗█████╗  ██████╔╝"
-echo "#  ██╔██╗ ██║╚██╔╝██║██╔══██╗██║██║   ██║██║   ██║██╔══╝  ██╔══██╗"
-echo "# ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║██║╚██████╔╝╚██████╔╝███████╗██║  ██║"
-echo "# ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝"
-echo "#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
 #todo:
 # 1) Acquire wallet address
 # 2) Ask config options
@@ -52,8 +45,22 @@ MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 
+# We need colours, colors if you desire freedom
+RED='\033[00;31m' && GREEN='\033[00;32m' && YELLOW='\033[00;33m' && BLUE='\033[00;34m' && PURPLE='\033[00;35m' && CYAN='\033[00;36m' && LIGHTGRAY='\033[00;37m' && LRED='\033[01;31m' && LGREEN='\033[01;32m' && LYELLOW='\033[01;33m' && LBLUE='\033[01;34m' && LPURPLE='\033[01;35m' && LCYAN='\033[01;36m' && WHITE='\033[01;37m' && RESTORE='\033[0m'
+
+function intro-text () {
+  echo "${LIGHTGRAY}#${PURPLE} ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
+  echo "${LIGHTGRAY}#${PURPLE} ╚██╗██╔╝████╗ ████║██╔══██╗██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗${RESTORE}"
+  echo "${LIGHTGRAY}#${PURPLE}  ╚███╔╝ ██╔████╔██║██████╔╝██║██║  ███╗██║  ███╗█████╗  ██████╔╝${RESTORE}"
+  echo "${LIGHTGRAY}#${PURPLE}  ██╔██╗ ██║╚██╔╝██║██╔══██╗██║██║   ██║██║   ██║██╔══╝  ██╔══██╗${RESTORE}"
+  echo "${LIGHTGRAY}#${PURPLE} ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║██║╚██████╔╝╚██████╔╝███████╗██║  ██║${RESTORE}"
+  echo "${LIGHTGRAY}#${PURPLE} ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝${RESTORE}"
+  echo "${LIGHTGRAY}#${CYAN}- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -${RESTORE}"
+  echo ""
+}
+
 # main stub test
-function full-build-ubuntu () {
+function ubuntu-arm-stub () {
 xmr-clone-repo-clean
 xmrigger-packages-ubuntu
 #config-cmake-ubuntu
@@ -177,8 +184,9 @@ function execute-make-hw-logical-cpu-variants () {
   make -j$MAKE_CORE_COUNT
 }
 
-####################
-# execution begins #
-####################
+function main () {
+  intro-text
+  ubuntu-arm-stub
+}
 
-full-build-ubuntu
+main
