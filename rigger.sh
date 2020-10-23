@@ -64,17 +64,13 @@ LPURPLE=$(echo -en '\033[01;35m')
 LCYAN=$(echo -en '\033[01;36m')
 WHITE=$(echo -en '\033[01;37m')
 
-# Test
-echo ${RED}RED${GREEN}GREEN${YELLOW}YELLOW${BLUE}BLUE${PURPLE}PURPLE${CYAN}CYAN${WHITE}WHITE${RESTORE}
-
 function intro-text () {
-  echo "${LIGHTGRAY}#${PURPLE} ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
-  echo "${LIGHTGRAY}#${PURPLE} ╚██╗██╔╝████╗ ████║██╔══██╗██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗${RESTORE}"
-  echo "${LIGHTGRAY}#${PURPLE}  ╚███╔╝ ██╔████╔██║██████╔╝██║██║  ███╗██║  ███╗█████╗  ██████╔╝${RESTORE}"
-  echo "${LIGHTGRAY}#${PURPLE}  ██╔██╗ ██║╚██╔╝██║██╔══██╗██║██║   ██║██║   ██║██╔══╝  ██╔══██╗${RESTORE}"
-  echo "${LIGHTGRAY}#${PURPLE} ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║██║╚██████╔╝╚██████╔╝███████╗██║  ██║${RESTORE}"
-  echo "${LIGHTGRAY}#${PURPLE} ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝${RESTORE}"
-  echo "${LIGHTGRAY}#${CYAN}- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -${RESTORE}"
+  echo "${YELLOW} ██╗  ██╗███╗   ███╗██████╗ ${PURPLE}██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
+  echo "${YELLOW} ╚██╗██╔╝████╗ ████║██╔══██╗${PURPLE}██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗${RESTORE}"
+  echo "${YELLOW}  ╚███╔╝ ██╔████╔██║██████╔╝${PURPLE}██║██║  ███╗██║  ███╗█████╗  ██████╔╝${RESTORE}"
+  echo "${YELLOW}  ██╔██╗ ██║╚██╔╝██║██╔══██╗${PURPLE}██║██║   ██║██║   ██║██╔══╝  ██╔══██╗${RESTORE}"
+  echo "${YELLOW} ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║${PURPLE}██║╚██████╔╝╚██████╔╝███████╗██║  ██║${RESTORE}"
+  echo "${YELLOW} ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝${PURPLE}╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝${RESTORE}"
   echo ""
 }
 
