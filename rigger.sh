@@ -46,7 +46,26 @@ MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 
 # We need colours, colors if you desire freedom
-RED='\033[00;31m' && GREEN='\033[00;32m' && YELLOW='\033[00;33m' && BLUE='\033[00;34m' && PURPLE='\033[00;35m' && CYAN='\033[00;36m' && LIGHTGRAY='\033[00;37m' && LRED='\033[01;31m' && LGREEN='\033[01;32m' && LYELLOW='\033[01;33m' && LBLUE='\033[01;34m' && LPURPLE='\033[01;35m' && LCYAN='\033[01;36m' && WHITE='\033[01;37m' && RESTORE='\033[0m'
+RESTORE=$(echo -en '\033[0m')
+RED=$(echo -en '\033[00;31m')
+GREEN=$(echo -en '\033[00;32m')
+YELLOW=$(echo -en '\033[00;33m')
+BLUE=$(echo -en '\033[00;34m')
+MAGENTA=$(echo -en '\033[00;35m')
+PURPLE=$(echo -en '\033[00;35m')
+CYAN=$(echo -en '\033[00;36m')
+LIGHTGRAY=$(echo -en '\033[00;37m')
+LRED=$(echo -en '\033[01;31m')
+LGREEN=$(echo -en '\033[01;32m')
+LYELLOW=$(echo -en '\033[01;33m')
+LBLUE=$(echo -en '\033[01;34m')
+LMAGENTA=$(echo -en '\033[01;35m')
+LPURPLE=$(echo -en '\033[01;35m')
+LCYAN=$(echo -en '\033[01;36m')
+WHITE=$(echo -en '\033[01;37m')
+
+# Test
+echo ${RED}RED${GREEN}GREEN${YELLOW}YELLOW${BLUE}BLUE${PURPLE}PURPLE${CYAN}CYAN${WHITE}WHITE${RESTORE}
 
 function intro-text () {
   echo "${LIGHTGRAY}#${PURPLE} ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
