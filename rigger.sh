@@ -65,13 +65,13 @@ LCYAN=$(echo -en '\033[01;36m')
 WHITE=$(echo -en '\033[01;37m')
 
 function intro-text () {
-  echo "${YELLOW} ██╗  ██╗███╗   ███╗██████╗ ${PURPLE}██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
-  echo "${YELLOW} ╚██╗██╔╝████╗ ████║██╔══██╗${PURPLE}██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗${RESTORE}"
-  echo "${YELLOW}  ╚███╔╝ ██╔████╔██║██████╔╝${PURPLE}██║██║  ███╗██║  ███╗█████╗  ██████╔╝${RESTORE}"
-  echo "${YELLOW}  ██╔██╗ ██║╚██╔╝██║██╔══██╗${PURPLE}██║██║   ██║██║   ██║██╔══╝  ██╔══██╗${RESTORE}"
-  echo "${YELLOW} ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║${PURPLE}██║╚██████╔╝╚██████╔╝███████╗██║  ██║${RESTORE}"
-  echo "${YELLOW} ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝${PURPLE}╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝${RESTORE}"
-  echo ""
+  echo "${PURPLE} ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
+  echo "${PURPLE} ╚██╗██╔╝████╗ ████║██╔══██╗██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗${RESTORE}"
+  echo "${PURPLE}  ╚███╔╝ ██╔████╔██║██████╔╝██║██║  ███╗██║  ███╗█████╗  ██████╔╝${RESTORE}"
+  echo "${PURPLE}  ██╔██╗ ██║╚██╔╝██║██╔══██╗██║██║   ██║██║   ██║██╔══╝  ██╔══██╗${RESTORE}"
+  echo "${PURPLE} ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║██║╚██████╔╝╚██████╔╝███████╗██║  ██║${RESTORE}"
+  echo "${PURPLE} ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝${RESTORE}"
+  echo "${CYAN}+---------------------------------------------------------------+"
 }
 
 # main stub test
@@ -85,23 +85,40 @@ execute-make-generic
 }
 
 # Pull pre-requisite packages for Alpine
-
+function xmrigger-packages-alpine () {
+  sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev hwloc-dev
+}
 # Pull pre-requisite packages for Centos7
-
+function xmrigger-packages-centos7 () {
+  sudo yum install -y epel-release
+  sudo yum install -y git make cmake gcc gcc-c++ libstdc++-static libuv-static hwloc-devel openssl-devel
+}
 # Pull pre-requisite packages for Centos8
-
+function xmrigger-packages-centos8 () {
+  sudo dnf install -y epel-release
+  sudo yum config-manager --set-enabled PowerTools
+  sudo dnf install -y git make cmake gcc gcc-c++ libstdc++-static hwloc-devel openssl-devel automake libtool autoconf
+}
 # Pull pre-requisite packages for Fedora
-
+function xmrigger-packages-fedora () {
+  sudo dnf install -y git make cmake gcc gcc-c++ libstdc++-static libuv-static hwloc-devel openssl-devel
+}
 # Pull pre-requisite packages for FreeBSD
-
+function xmrigger-packages-freebsd () {
+  pkg install git cmake libuv openssl hwloc
+}
 # Pull pre-requisite packages for MacOS
-
+function xmrigger-packages-macos () {
+  brew install cmake libuv openssl hwloc
+}
 # Pull pre-requisite packages for Ubuntu
 function xmrigger-packages-ubuntu () { 
   sudo apt-get install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev 
 }
-
-# Pull pre-requisite packages for Windows
+# Pull pre-requisite packages for Windows using msys2 - VS19 installs skip this step
+function xmrigger-packages-windows-msys2 () {
+  pacman -S mingw-w64-x86_64-gcc git make
+}
 
 # Clone XMRig repo - Linux generic - clean dir
 function xmr-clone-repo-clean () { 
@@ -137,7 +154,7 @@ function config-cmake-macos () {
 function config-cmake-ubuntu () { 
   # Below looks to cause issues if invoked by default on an arm-variant CPU arch
   # CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
-  echo "Bash hates empty functions - holding the fort"
+  echo "Bash hates empty functions - holding the fort until this works again"
 }
 function config-cmake-windows-msys2 () { 
   CMAKE_ARGS=$CMAKE_ARGS"-G Visual Studio 16 2019 -A x64 -DXMRIG_DEPS='$MSYS_GCC_64_DIR'" 
