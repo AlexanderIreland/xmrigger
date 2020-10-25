@@ -78,12 +78,12 @@ function intro-text () {
 
 # main stub test
 function ubuntu-arm-stub () {
-xmr-clone-repo-clean
-xmrigger-packages-ubuntu
-#config-cmake-ubuntu
-config-cmake-arm
-execute-cmake-generic
-execute-make-generic 
+  xmr-clone-repo-clean
+  xmrigger-packages-ubuntu
+  #config-cmake-ubuntu
+  config-cmake-arm
+  execute-cmake-generic
+  execute-make-generic 
 }
 
 # Configure swap file for low-mem Linux systems
@@ -91,6 +91,8 @@ function swapfile-linux-gen () {
   # 3G default, generally not more than 2 is needed
   sudo fallocate -l 3G $SWAP_FILE_DIR_LINUX_GENERIC
   sudo chmod 600 $SWAP_FILE_DIR_LINUX_GENERIC
+  sudo mkswap $SWAP_FILE_DIR_LINUX_GENERIC
+  sudo swapon $SWAP_FILE_DIR_LINUX_GENERIC
 }
 
 # Pull pre-requisite packages for Alpine
