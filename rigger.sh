@@ -1,6 +1,6 @@
 #!/bin/bash
 #todo:
-# 1) Acquire wallet address
+# 1) Do away with wallet file, move to complete config generator - use sed to insert values where necessary
 # 2) Ask config options
 # 3) Gather prerequisites based on OS
 #  3.a) Centos7: epel-release git make cmake gcc gcc-c++ libstdc++-static libuv-static hwloc-devel openssl-devel
