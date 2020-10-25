@@ -34,6 +34,7 @@
 #  7.a) Alpine, Centos, Fedora, Ubuntu, Windows: make -j$(nproc)
 #  7.b) FreeBSD: make -j$(sysctl -n hw.ncpu)
 #  7.c) MacOS: make -j$(sysctl -n hw.logicalcpu)
+# 8) Configure page files for low-mem systems
 
 # Load vars
 CMAKE_ARGS=""
@@ -44,6 +45,7 @@ MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
 MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
+SWAP_FILE_DIR_LINUX_GENERIC="/paging-xmrigger"
 
 # We need colours, colors if you desire freedom
 RESTORE=$(echo -en '\033[0m')
@@ -82,6 +84,13 @@ xmrigger-packages-ubuntu
 config-cmake-arm
 execute-cmake-generic
 execute-make-generic 
+}
+
+# Configure swap file for low-mem Linux systems
+function swapfile-linux-gen () {
+  # 3G default, generally not more than 2 is needed
+  sudo fallocate -l 3G $SWAP_FILE_DIR_LINUX_GENERIC
+  sudo chmod 600 $SWAP_FILE_DIR_LINUX_GENERIC
 }
 
 # Pull pre-requisite packages for Alpine
