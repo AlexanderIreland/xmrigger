@@ -35,6 +35,20 @@
 #  7.b) FreeBSD: make -j$(sysctl -n hw.ncpu)
 #  7.c) MacOS: make -j$(sysctl -n hw.logicalcpu)
 # 8) Configure page files for low-mem systems
+# 9) Configure compilers - initial pre-revision list
+#  9.a) C compilers
+#   9.a.1) Full Cnn compliance compilers
+#    9.a.1.a) EDG - Win, Unix, Android, RISC
+#    9.a.1.b) IAR - Windows only
+#   9.a.2) Partial Cnn compliance compilers
+#    9.a.2.a) Clang - Win, Unix, Android, RISC - Full compliance with c89, c99, partial with c11, c18
+#    9.a.2.b) GCC - Partial/Most Win, Unix, AmigaOS, VAX/VMS, RTEMS, DOS - Full compliance with c89, partial with c99, c11 and c18
+#    9.a.2.c) Oracle C - Win, Unix, Android, RISC - compliant with c89, c99, c11
+#  9.b) Cxx compilers
+#   9.b.1) Full C++nn compliance compilers
+#    9.b.1.a) Clang - Partial/Most Win, Unix, Android, RISC
+#    9.b.1.b) EDG - Win, Unix, Android, RISC
+#    9.b.1.c) Visual C++ - Win, Unix-Like, Android
 
 # Load vars
 CMAKE_ARGS=""
