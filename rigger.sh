@@ -45,6 +45,7 @@ MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
 MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
+SELECTED_COMPILE_OS=""
 SWAP_FILE_DIR_LINUX_GENERIC="/paging-xmrigger"
 
 # We need colours, colors if you desire freedom
@@ -227,8 +228,19 @@ function execute-make-hw-logical-cpu-variants () {
   make -j$MAKE_CORE_COUNT
 }
 
+# Menu function to select OS
+function pick-compile-os () {
+  PS3="Enter the number that corresponds to your OS: "
+  select os in Alpine Centos7 Centos8 Fedora FreeBSD MacOS Ubuntu Windows-MSYS2 Windows-VS2019
+  do
+      echo "${PURPLE}Target OS: ${GREEN}$os${RESTORE}"
+      SELECTED_COMPILE_OS=$os
+  done
+}
+
 function main () {
   intro-text
+  pick-compile-os
   ubuntu-arm-stub
 }
 
