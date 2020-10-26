@@ -59,8 +59,11 @@ MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
 MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
+SELECTED_COMPILE_ARCH=""
 SELECTED_COMPILE_OS=""
 SWAP_FILE_DIR_LINUX_GENERIC="/paging-xmrigger"
+SWAP_FILE_SIZE="3G"
+XMRIG_DIR="/opt"
 
 # We need colours, colors if you desire freedom
 RESTORE=$(echo -en '\033[0m')
@@ -91,6 +94,18 @@ function intro-text () {
   echo "${CYAN}+---------------------------------------------------------------+"
 }
 
+# launch flag support
+while getopts a:o:s:S:v: flag
+do
+    case "${flag}" in
+        a) SELECTED_COMPILE_ARCH=${OPTARG};;
+        o) SELECTED_COMPILE_OS=${OPTARG};;
+        s) SWAP_FILE_DIR_LINUX_GENERIC=${OPTARG};;
+        S) SWAP_FILE_SIZE="${OPTARG}G";;
+        v) CMAKE_ARGS="$CMAKE_ARGS -v";; # verbose cmake for troubleshooting
+    esac
+done
+
 # main stub test
 function ubuntu-arm-stub () {
   xmr-clone-repo-clean
@@ -99,6 +114,14 @@ function ubuntu-arm-stub () {
   config-cmake-arm
   execute-cmake-generic
   execute-make-generic 
+}
+
+# Main function that can handle build 
+function main-compile-funct-template () {
+  # Providing an alternative shorthand to menu navigation
+  xmr-clone-repo-clean
+  xmrigger-packages-$SELECTED_COMPILE_OS
+  config-cmake-$SELECTED_COMPILE_ARCH
 }
 
 # Configure swap file for low-mem Linux systems
@@ -148,14 +171,14 @@ function xmrigger-packages-windows-msys2 () {
 
 # Clone XMRig repo - Linux generic - clean dir
 function xmr-clone-repo-clean () { 
-  cd /opt/
-  rm -rf /opt/xmrig/
+  cd $XMRIG_DIR
+  rm -rf $XMRIG_DIR/xmrig/ # nukes any broken/existing installations
   git clone https://github.com/xmrig/xmrig.git
   mkdir xmrig/build && cd xmrig/build
 }
 # Clone XMRig repo - Linux generic - no clean
 function xmr-clone-repo () { 
-  cd /opt/ && git clone https://github.com/xmrig/xmrig 
+  cd $XMRIG_DIR && git clone https://github.com/xmrig/xmrig 
 }
 
 # Injecting os-specific arguments for cmake
