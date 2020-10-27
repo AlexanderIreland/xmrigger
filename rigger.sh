@@ -107,16 +107,16 @@ do
 done
 
 # main stub test
-function ubuntu-arm-stub () {
-  xmr-clone-repo-clean
-  xmrigger-packages-ubuntu
-  #config-cmake-ubuntu
-  config-cmake-arm
-  execute-cmake-generic
-  execute-make-generic 
-}
+#function ubuntu-arm-stub () {
+#  xmr-clone-repo-clean
+#  xmrigger-packages-ubuntu
+#  #config-cmake-ubuntu
+#  config-cmake-arm
+#  execute-cmake-generic
+#  execute-make-generic 
+#}
 
-# Main function that can handle build 
+# Main function that can handle build with flags - currently only requires -o for OS and -a for arch
 function main-compile-funct-template () {
   # Providing an alternative shorthand to menu navigation
   xmr-clone-repo-clean
@@ -218,6 +218,12 @@ function config-cmake-windows-vs2019-cuda-support () {
 # Injecting cpu-arch arguments for cmake
 function config-cmake-arm () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm' 
+}
+function config-cmake-x86 () {
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_BUILD_TYPE=release32'
+}
+function config-cmake-x64 () {
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_GENERATOR_PLATFORM=x64'
 }
 
 # Will produce a 32-bit binary out for OSX
