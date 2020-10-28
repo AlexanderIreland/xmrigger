@@ -85,6 +85,8 @@ LCYAN=$(echo -en '\033[01;36m')
 WHITE=$(echo -en '\033[01;37m')
 
 function intro-text () {
+  echo ""
+  echo "${CYAN}+---------------------------------------------------------------+"
   echo "${PURPLE} ██╗  ██╗███╗   ███╗██████╗ ██╗ ██████╗  ██████╗ ███████╗██████╗ ${RESTORE}"
   echo "${PURPLE} ╚██╗██╔╝████╗ ████║██╔══██╗██║██╔════╝ ██╔════╝ ██╔════╝██╔══██╗${RESTORE}"
   echo "${PURPLE}  ╚███╔╝ ██╔████╔██║██████╔╝██║██║  ███╗██║  ███╗█████╗  ██████╔╝${RESTORE}"
@@ -92,6 +94,19 @@ function intro-text () {
   echo "${PURPLE} ██╔╝ ██╗██║ ╚═╝ ██║██║  ██║██║╚██████╔╝╚██████╔╝███████╗██║  ██║${RESTORE}"
   echo "${PURPLE} ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝${RESTORE}"
   echo "${CYAN}+---------------------------------------------------------------+"
+  echo ""
+}
+
+function help-text () {
+  echo ""
+  echo "${CYAN}+------------------------------------------------------------+"
+  echo "${CYAN}See below for the full list of flags available and their usage"
+  echo "${LGREEN}-a ${LGREEN}-${LCYAN} Defines the CPU architecture, options available are:{$MAGENTA} arm, x86, x64${RESTORE}"
+  echo "${LGREEN}-o ${LGREEN}-${LCYAN} Defines the OS, options available are:{$MAGENTA}  alpine, arch, centos7, centos8, fedora, freebsd, manjaro, ubuntu, macos, win10-msys2 and win10-vs2019${RESTORE}"
+  echo "${LGREEN}-s ${LGREEN}-${LCYAN} Defines the swap file directory if required - this is recommended for systems with <2G of memory as compiling usually will occupy more than 2G even without loading a desktop environment${RESTORE}"
+  echo "${LGREEN}-S ${LGREEN}-${LCYAN} Sets the size of the swap file, only accepts ints (whole numbers, no decimal places){RESTORE}"
+  echo "${CYAN}+---------------------------------------------------------------+"
+  echo ""
 }
 
 # launch flag support
@@ -271,19 +286,9 @@ function execute-make-hw-logical-cpu-variants () {
   make -j$MAKE_CORE_COUNT
 }
 
-# Menu function to select OS
-function pick-compile-os () {
-  PS3="Enter the number that corresponds to your OS: "
-  select os in Alpine Centos7 Centos8 Fedora FreeBSD MacOS Ubuntu Windows-MSYS2 Windows-VS2019
-  do
-      echo "${PURPLE}Target OS: ${GREEN}$os${RESTORE}"
-      SELECTED_COMPILE_OS=$os
-  done
-}
-
 function main () {
   intro-text
-  pick-compile-os
+  help-text
   ubuntu-arm-stub
 }
 
