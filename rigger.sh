@@ -140,12 +140,23 @@ function main-compile-funct-template () {
 }
 
 # Configure swap file for low-mem Linux systems
-function swapfile-linux-gen () {
+function swapfile-generic () {
   # 3G default, generally not more than 2 is needed
+  echo ""
+  echo "${CYAN}+---------------------------------------------------------------+"
+  echo "${LGREEN}# If you've set either the -s or -S flags a swapfile will now be created${RESTORE}"
+  echo "${LGREEN}# If one of these flags is set but not the other, the default value will be used for the unset flag${RESTORE}"
+  echo "${CYAN}+---------------------------------------------------------------+"
+  echo "${LGREEN}# The defaults are 3G swap size, and the swap file location is /paging-xmrigger${RESTORE}"
+  echo "${MAGENTA}# If these settings work for you, keep on truckin'${RESTORE}"
+  echo "${CYAN}+---------------------------------------------------------------+"
+  echo ""
   sudo fallocate -l 3G $SWAP_FILE_DIR_LINUX_GENERIC
   sudo chmod 600 $SWAP_FILE_DIR_LINUX_GENERIC
   sudo mkswap $SWAP_FILE_DIR_LINUX_GENERIC
   sudo swapon $SWAP_FILE_DIR_LINUX_GENERIC
+  echo "${CYAN}+---------------------------------------------------------------+"
+  echo ""
 }
 
 # Pull pre-requisite packages for Alpine
@@ -286,10 +297,16 @@ function execute-make-hw-logical-cpu-variants () {
   make -j$MAKE_CORE_COUNT
 }
 
+
+
 function main () {
   intro-text
   help-text
-  ubuntu-arm-stub
+  #ubuntu-arm-stub
+  if [[ $save =~ s ]] || [[ $save =~ S ]]
+  then
+	swapfile-generic
+  else
 }
 
 main
