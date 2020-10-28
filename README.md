@@ -33,7 +33,7 @@ chmod +x xmrigger
 ```
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
-    - For any other RISC architecture, default to arm
+    - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
   - o: declares OS - Currently manual but auto-detect is coming
   - s: declares the swap file dir
   - S: declares the swap file size in G, only digits required
