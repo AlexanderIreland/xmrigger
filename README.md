@@ -26,7 +26,7 @@ Launching the utility can be done in shorthand like below:
 chmod +x xmrigger
 ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
 ```
-Or with an interactive offering by running the below from within the cloned dir:
+~~Or with an interactive offering by running the below from within the cloned dir:~~ Recently removed in favor of launch flags, may be reimplemented
 ```
 chmod +x xmrigger
 ./xmrigger
