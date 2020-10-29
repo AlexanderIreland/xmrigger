@@ -49,6 +49,7 @@
 #    9.b.1.a) Clang - Partial/Most Win, Unix, Android, RISC
 #    9.b.1.b) EDG - Win, Unix, Android, RISC
 #    9.b.1.c) Visual C++ - Win, Unix-Like, Android
+#  10) Noting that some arm systems have issues with caching on certain versions of GCC - known-good version is gcc-8.3.0
 
 # Load vars
 CMAKE_ARGS=""
@@ -156,6 +157,10 @@ function swapfile-generic () {
 # Pull pre-requisite packages for Alpine
 function xmrigger-packages-alpine () {
   sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev hwloc-dev
+}
+# ARM systems generally do not require hwloc
+function xmrigger-packages-alpine-arm () {
+  sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev
 }
 # Pull pre-requisite packages for Centos7
 function xmrigger-packages-centos7 () {
