@@ -217,19 +217,19 @@ function xmr-clone-repo () {
 
 # Injecting os-specific flags for cmake
 function config-cmake-alpine () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  CMAKE_ARGS=$CMAKE_ARGS' 
 }
 function config-cmake-centos7 () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  CMAKE_ARGS=$CMAKE_ARGS' 
 }
 function config-cmake-centos8 () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  CMAKE_ARGS=$CMAKE_ARGS' 
 }
 function config-cmake-fedora () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  CMAKE_ARGS=$CMAKE_ARGS' 
 }
 function config-cmake-freebsd () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
+  CMAKE_ARGS=$CMAKE_ARGS' 
 }
 function config-cmake-macos () { 
   CMAKE_ARGS=$CMAKE_ARGS"-DOPENSSL_ROOT_DIR=OSX_OPENSSL_DIR" 
