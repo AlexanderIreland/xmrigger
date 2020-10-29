@@ -121,16 +121,6 @@ do
     esac
 done
 
-# main stub test
-#function ubuntu-arm-stub () {
-#  xmr-clone-repo-clean
-#  xmrigger-packages-ubuntu
-#  #config-cmake-ubuntu
-#  config-cmake-arm
-#  execute-cmake-generic
-#  execute-make-generic 
-#}
-
 # Main function that can handle build with flags - currently only requires -o for OS and -a for arch
 function main-compile-funct-template () {
   # Providing an alternative shorthand to menu navigation
@@ -158,6 +148,10 @@ function swapfile-generic () {
   echo "${CYAN}+---------------------------------------------------------------+"
   echo ""
 }
+
+###############################
+# Pre-requisite installations #
+###############################
 
 # Pull pre-requisite packages for Alpine
 function xmrigger-packages-alpine () {
@@ -195,6 +189,10 @@ function xmrigger-packages-windows-msys2 () {
   pacman -S mingw-w64-x86_64-gcc git make
 }
 
+####################
+# Clone XMRig repo #
+####################
+
 # Clone XMRig repo - Linux generic - clean dir
 function xmr-clone-repo-clean () { 
   cd $XMRIG_DIR
@@ -202,12 +200,17 @@ function xmr-clone-repo-clean () {
   git clone https://github.com/xmrig/xmrig.git
   mkdir xmrig/build && cd xmrig/build
 }
+
 # Clone XMRig repo - Linux generic - no clean
 function xmr-clone-repo () { 
   cd $XMRIG_DIR && git clone https://github.com/xmrig/xmrig 
 }
 
-# Injecting os-specific arguments for cmake
+###########################
+# OS-specific cmake flags #
+###########################
+
+# Injecting os-specific flags for cmake
 function config-cmake-alpine () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_NAME=Linux' 
 }
@@ -241,6 +244,10 @@ function config-cmake-windows-vs2019-cuda-support () {
   CMAKE_ARGS=$CMAKE_ARGS' -G "Visual Studio 16 2019" -A x64 -DCUDA_TOOLKIT_ROOT_DIR="$CUDA_TOOLKIT_DIR"' 
 }
 
+#############################
+# Arch-specific cmake flags #
+#############################
+
 # Injecting cpu-arch arguments for cmake
 function config-cmake-arm () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm' 
@@ -263,9 +270,13 @@ function config-cmake-osx-64 () {
 }
 
 # Will produce a 96-bit universal binary out for OSX
-function config-cmake-osx-86 () { 
+function config-cmake-osx-96 () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64;i386' 
 }
+
+##########################
+# Cmake execution - pray #
+##########################
 
 # Execute cmake and pray
 function execute-cmake-generic () { 
@@ -278,6 +289,10 @@ function execute-cmake-generic () {
 function execute-cmake-vs2019 () { 
   cmake --build . --config Release 
 }
+
+##################
+# make functions #
+##################
 
 # Execute make with generic nproc arg - for Alpine, Arch, Centos7, Centos8, Debian, Fedora, Manjaro, Ubuntu Windows /w MSYS2
 function execute-make-generic () {
@@ -297,16 +312,19 @@ function execute-make-hw-logical-cpu-variants () {
   make -j$MAKE_CORE_COUNT
 }
 
-
+###############################################################################
+# Main program function - put functs here so that the computer goes beep boop #
+###############################################################################
 
 function main () {
   intro-text
   help-text
-  #ubuntu-arm-stub
   if [[ $save =~ s ]] || [[ $save =~ S ]]
   then
 	swapfile-generic
   else
 }
+
+# beep boop
 
 main
