@@ -255,7 +255,7 @@ function config-cmake-windows-vs2019-cuda-support () {
 
 # Injecting cpu-arch arguments for cmake
 function config-cmake-arm () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm' 
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm -DWITH_RANDOMX=OFF' #randomx currently causes compile issues on ARM systems, bug fix pending from official xmrig repo
 }
 function config-cmake-x86 () {
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_BUILD_TYPE=release32'
