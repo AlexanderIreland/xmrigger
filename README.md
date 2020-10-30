@@ -1,7 +1,19 @@
-# xmrigger
+# XMRigger
 
-XMRig has issues compiling, specifically on ARM or low-memory systems. XMRigger aims to solve this issue by completely scripting the prerequisites, dependencies, build and compilation of XMRig. xmrigger has support for mostly any Linux, OSX, Windows or modern Android distros, and includes support of ARM, x86 and x64 binary outputs.
+## What is this?
 
+XMRigger is a catch-all installer for XMRig which is a well-known, popular and resource efficient miner for XMR.
+
+## Why does this exist?
+Compiling XMRig on a non-standard system quite frankly just sucks at the moment and takes time to troubleshoot. Fiddling with compile settings across my small library of SBCs and other assorted systems was a pain in the butt. I figured if I had to do it once, I might as well share this with the community so that it need not be repeated. [[ time == $CURRENCY ]]
+
+## What does this mean for me? 
+Specifically if you have a non-standard system like any of the myriad of core-rich SBCs available in the budding SBC market, you'll now be able to pull, configure, compile and run your very own XMRig miner with no stress or hassle because I've done the nitty-gritty for you. SBCs for the most part are low-yield miners, but also cost very little to run - in some cases it can make sense to enslave an idle SBC to print XMR.
+
+## Couldn't I just compile XMRig on my own?
+Absolutely and I encourage you to do so if you're able to! XMRigger is mainly aimed at systems which aren't standard and have significant issues during compilation, but also supports more common systems and configs.
+
+## What systems can I run this on?
 Currently officially supported OS and architecture combinations are as marked below:
 1. Linux
    * Alpine - x86, x64, arm
@@ -18,16 +30,19 @@ Currently officially supported OS and architecture combinations are as marked be
 3. Windows:
    * Win10 - x86, x64
       * install can be handled either through VS2019 or MSYS2 - arm support not yet planned
+4. Android:
+   * TBA - Hold tight, this feature is coming
 
+## How do I run XMRigger?
 Launching the utility can be done in shorthand like below:
 ```
-chmod +x xmrigger
-./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
+git clone https://github.com/AlexanderIreland/xmrigger
+cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
 ```
 ~~Or with an interactive offering by running the below from within the cloned dir:~~ Recently removed in favor of launch flags, may be reimplemented
 ```
-chmod +x xmrigger
-./xmrigger
+https://github.com/AlexanderIreland/xmrigger
+cd xmrigger && chmod +x xmrigger && ./xmrigger
 ```
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
