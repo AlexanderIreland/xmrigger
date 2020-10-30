@@ -1,7 +1,5 @@
 # xmrigger
 
-**This utility is mostly functional but solely rigged to test on an x64 ARM system at the moment as I've got an army of SBCs that I'm using for build workers - Check back in a few weeks for a more completed and fully-fledge build.**
-
 XMRig has issues compiling, specifically on ARM or low-memory systems. XMRigger aims to solve this issue by completely scripting the prerequisites, dependencies, build and compilation of XMRig. xmrigger has support for mostly any Linux, OSX, Windows or modern Android distros, and includes support of ARM, x86 and x64 binary outputs.
 
 Currently officially supported OS and architecture combinations are as marked below:
