@@ -1,8 +1,7 @@
 # XMRigger
 
 ## What is this?
-
-XMRigger is a catch-all installer for XMRig which is a well-known, popular and resource efficient miner for XMR.
+XMRigger is a catch-all installer for [XMRig](https://github.com/xmrig/xmrig) which is a high performance, open source, cross platform RandomX, KawPow, CryptoNight and AstroBWT unified CPU/GPU miner.
 
 ## Why does this exist?
 Compiling XMRig on a non-standard system quite frankly just sucks at the moment and takes time to troubleshoot. Fiddling with compile settings across my small library of SBCs and other assorted systems was a pain in the butt. I figured if I had to do it once, I might as well share this with the community so that it need not be repeated. [[ time == $CURRENCY ]]
