@@ -15,17 +15,17 @@ Absolutely and I encourage you to do so if you're able to! XMRigger is mainly ai
 ## What systems can I run this on?
 Currently officially supported OS and architecture combinations are as marked below:
 1. Linux
-   * Alpine - x86, x64, arm
-   * Archlinux - x86, x64, arm
-   * CentOS7 - x86, x64, arm
-   * CentOS8 - x86, x64, arm
-   * Fedora - x86, x64, arm
-   * FreeBSD - x86, x64, arm
-   * Manjaro - x86, x64, arm
-   * Ubuntu - x86, x64, arm
+   * Alpine - x86, x64, arm7, arm8
+   * Archlinux - x86, x64, arm7, arm8
+   * CentOS7 - x86, x64, arm7, arm8
+   * CentOS8 - x86, x64, arm7, arm8
+   * Fedora - x86, x64, arm7, arm8
+   * FreeBSD - x86, x64, arm7, arm8
+   * Manjaro - x86, x64, arm7, arm8
+   * Ubuntu - x86, x64, arm7, arm8
 2. MacOS:
-   * MacOS Mojave - x86, x64, arm
-   * MacOS Catalina - x86, x64, arm
+   * MacOS Mojave - x86, x64, arm7, arm8
+   * MacOS Catalina - x86, x64, arm7, arm8
 3. Windows:
    * Win10 - x86, x64
       * install can be handled either through VS2019 or MSYS2 - arm support not yet planned
