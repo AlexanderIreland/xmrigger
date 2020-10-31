@@ -50,7 +50,7 @@
 #    9.b.1.b) EDG - Win, Unix, Android, RISC
 #    9.b.1.c) Visual C++ - Win, Unix-Like, Android
 #  10) Noting that some arm systems have issues with caching on certain versions of GCC - known-good version is gcc-8.3.0
-#  11) -DARM_TARGET 7 isn't valid, only 8 works - no word on pending support
+#  11) Create independent arm7 and arm8 build options, both need independent cmake opts
 
 # Load vars
 CMAKE_ARGS=""
@@ -102,8 +102,8 @@ function intro-text () {
 function help-text () {
   echo ""
   echo "${CYAN}+------------------------------------------------------------+"
-  echo "${CYAN}See below for the full list of flags available and their usage"
-  echo "${LGREEN}-a ${LGREEN}-${LCYAN} Defines the CPU architecture, options available are:{$MAGENTA} arm, x86, x64${RESTORE}"
+  echo "${CYAN}See below for the full list of flags available and their usage - all flag arguments are lowercase"
+  echo "${LGREEN}-a ${LGREEN}-${LCYAN} Defines the CPU architecture, options available are:{$MAGENTA} arm7, arm8, x86, x64${RESTORE}"
   echo "${LGREEN}-o ${LGREEN}-${LCYAN} Defines the OS, options available are:{$MAGENTA}  alpine, arch, centos7, centos8, fedora, freebsd, manjaro, ubuntu, macos, win10-msys2 and win10-vs2019${RESTORE}"
   echo "${LGREEN}-s ${LGREEN}-${LCYAN} Defines the swap file directory if required - this is recommended for systems with <2G of memory as compiling usually will occupy more than 2G even without loading a desktop environment${RESTORE}"
   echo "${LGREEN}-S ${LGREEN}-${LCYAN} Sets the size of the swap file, only accepts ints (whole numbers, no decimal places){RESTORE}"
@@ -159,9 +159,13 @@ function swapfile-generic () {
 function xmrigger-packages-alpine () {
   sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev hwloc-dev
 }
-# ARM systems generally do not require hwloc
-function xmrigger-packages-alpine-arm () {
-  sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev
+# ARM systems generally do not require hwloc - doesn't harm to include, however
+function xmrigger-packages-alpine-arm7 () {
+  sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev hwloc-dev
+}
+# ARM systems generally do not require hwloc - doesn't harm to include, however
+function xmrigger-packages-alpine-arm8 () {
+  sudo apk add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev hwloc-dev
 }
 # Pull pre-requisite packages for Centos7
 function xmrigger-packages-centos7 () {
@@ -255,8 +259,11 @@ function config-cmake-windows-vs2019-cuda-support () {
 #############################
 
 # Injecting cpu-arch arguments for cmake
-function config-cmake-arm () { 
+function config-cmake-arm8 () { 
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm -DWITH_RANDOMX=OFF -DARM_TARGET=8' #randomx currently causes compile issues on ARM systems, bug fix pending from official xmrig repo
+}
+function config-cmake-arm7 () { 
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm -DWITH_RANDOMX=OFF -DARM_TARGET=7' #randomx currently causes compile issues on ARM systems, bug fix pending from official xmrig repo
 }
 function config-cmake-x86 () {
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_BUILD_TYPE=release32'
