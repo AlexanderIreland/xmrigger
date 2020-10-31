@@ -50,6 +50,7 @@
 #    9.b.1.b) EDG - Win, Unix, Android, RISC
 #    9.b.1.c) Visual C++ - Win, Unix-Like, Android
 #  10) Noting that some arm systems have issues with caching on certain versions of GCC - known-good version is gcc-8.3.0
+#  11) -DARM_TARGET 7 isn't valid, only 8 works - no word on pending support
 
 # Load vars
 CMAKE_ARGS=""
@@ -255,7 +256,7 @@ function config-cmake-windows-vs2019-cuda-support () {
 
 # Injecting cpu-arch arguments for cmake
 function config-cmake-arm () { 
-  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm -DWITH_RANDOMX=OFF' #randomx currently causes compile issues on ARM systems, bug fix pending from official xmrig repo
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_SYSTEM_PROCESSOR=arm -DWITH_RANDOMX=OFF -DARM_TARGET=8' #randomx currently causes compile issues on ARM systems, bug fix pending from official xmrig repo
 }
 function config-cmake-x86 () {
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_BUILD_TYPE=release32'
