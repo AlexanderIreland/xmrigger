@@ -38,11 +38,6 @@ Launching the utility can be done in shorthand like below:
 git clone https://github.com/AlexanderIreland/xmrigger
 cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
 ```
-~~Or with an interactive offering by running the below from within the cloned dir:~~ Recently removed in favor of launch flags, may be reimplemented. This currently just prints out a list of launch flags.
-```
-https://github.com/AlexanderIreland/xmrigger
-cd xmrigger && chmod +x xmrigger && ./xmrigger
-```
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
     - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
