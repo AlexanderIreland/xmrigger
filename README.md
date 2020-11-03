@@ -32,12 +32,16 @@ Currently officially supported OS and architecture combinations are as marked be
 4. Android:
    * TBA - Hold tight, this feature is coming
 
+## How do I generate a config file?
+I would recommend [this utility](https://xmrig.com/wizard) offered by xmrig.com - It's pretty easy breezy, there's no real need for me to reinvent the wheel here.
+
 ## How do I run XMRigger?
 Launching the utility can be done in shorthand like below:
 ```
 git clone https://github.com/AlexanderIreland/xmrigger
 cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
 ```
+
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
     - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
