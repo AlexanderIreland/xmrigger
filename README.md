@@ -42,6 +42,28 @@ git clone https://github.com/AlexanderIreland/xmrigger
 cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
 ```
 
+## What compilers can I use?
+Currently supported compilers are:
+1. Linux
+   * clang c/cxx
+   * edg c/cxx
+   * gcc c/cxx
+   * oracle c
+2. MacOS
+   * clang c/cxx
+   * gcc c/cxx
+3. Windows
+   * clang c/cxx
+   * edg c/cxx
+   * gcc c/cxx
+   * iar c
+   * visual-c++ cxx
+4. Android
+   * clang c/cxx
+   * edg c/cxx
+   * gcc c/cxx
+   * oracle c
+
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
     - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
