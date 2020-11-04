@@ -54,13 +54,16 @@
 
 # Load vars
 CMAKE_ARGS=""
+C_COMPILER="gcc" #gcc is the default and usually fine
 CUDA_TOOLKIT_DIR="c:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.0" #default - bless fwdslash
+CXX_COMPILER="gcc" #gcc is the default and usually fine
 MAKE_CORE_COUNT=1
 MSVS2019_GCC_64_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
 MSVS2019_XMRIGDEPS_DIR="c:\xmrig-deps\msvc2019\x64" #default, may req escapes
 MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
+PACKAGE_MANAGER=""
 SELECTED_COMPILE_ARCH=""
 SELECTED_COMPILE_OS=""
 SWAP_FILE_DIR_LINUX_GENERIC="/paging-xmrigger"
@@ -336,17 +339,44 @@ function execute-make-hw-logical-cpu-variants () {
   make -j$MAKE_CORE_COUNT
 }
 
+function set-package-manager () {
+	if [[ $SELECTED_COMPILE_OS=="alpine" ]]
+  then
+    PACKAGE_MANAGER="apk"
+  elif [[ $SELECTED_COMPILE_OS=="arch" ]] || [[ $SELECTED_COMPILE_OS=="manjaro" ]] || [[ $SELECTED_COMPILE_OS=="windows-msys2" ]]
+  then
+    PACKAGE_MANAGER="pacman"
+  elif [[ $SELECTED_COMPILE_OS=="centos6" ]] || [[ $SELECTED_COMPILE_OS=="centos7" ]] || [[ $SELECTED_COMPILE_OS=="centos8" ]]
+  then
+    PACKAGE_MANAGER="yum"
+  elif [[ $SELECTED_COMPILE_OS=="fedora" ]]
+  then
+    PACKAGE_MANAGER="dnf"
+  elif [[ $SELECTED_COMPILE_OS=="freebsd" ]]
+  then
+    PACKAGE_MANAGER="pkg"
+  elif [[ $SELECTED_COMPILE_OS=="macos" ]]
+    PACKAGE_MANAGER="brew"
+  then
+  elif [[ $SELECTED_COMPILE_OS=="ubuuntu" ]]
+  then
+    PACKAGE_MANAGER="apt-get"
+  fi
+}
+
 ######################
 # compiler functions #
 ######################
 
 function set-c-compiler () {
-  # stub - election is making me anxious
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_C_COMPILER=$C_COMPILER'
 }
 
 function set-cxx-compiler () {
-  # stub - election is making me anxious
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_CXX_COMPILER=$CXX_COMPILER'
 }
+
+
 
 ###############################################################################
 # Main program function - put functs here so that the computer goes beep boop #
@@ -355,6 +385,7 @@ function set-cxx-compiler () {
 function main () {
   intro-text
   help-text
+  set-package-manager
   if [[ $save =~ s ]] || [[ $save =~ S ]]
   then
 	swapfile-generic
