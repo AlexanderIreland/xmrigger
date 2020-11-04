@@ -111,7 +111,10 @@ function help-text () {
   echo ""
 }
 
-# launch flag support
+#######################
+# launch flag support #
+#######################
+
 while getopts a:o:s:S:v: flag
 do
     case "${flag}" in
@@ -123,7 +126,10 @@ do
     esac
 done
 
-# Main function that can handle build with flags - currently only requires -o for OS and -a for arch
+######################################################################################################
+# Main function that can handle build with flags - currently only requires -o for OS and -a for arch #
+######################################################################################################
+
 function main-compile-funct-template () {
   # Providing an alternative shorthand to menu navigation
   xmr-clone-repo-clean
@@ -131,9 +137,14 @@ function main-compile-funct-template () {
   config-cmake-$SELECTED_COMPILE_ARCH
 }
 
-# Configure swap file for low-mem Linux systems
+#################################################
+# Configure swap file for low-mem Linux systems #
+#################################################
+
 function swapfile-generic () {
   # 3G default, generally not more than 2 is needed
+  # typically 4G total memory is recommended for compilation to be successful
+  # bear in mind that using swap is also a tad slower, compile time will suffer as a result if you have to dip into swap
   echo ""
   echo "${CYAN}+---------------------------------------------------------------+"
   echo "${LGREEN}# If you've set either the -s or -S flags a swapfile will now be created${RESTORE}"
@@ -323,6 +334,18 @@ function execute-make-hw-ncpu-variants () {
 function execute-make-hw-logical-cpu-variants () {
   MAKE_CORE_COUNT=$(sysctl -n hw.logicalcpu)
   make -j$MAKE_CORE_COUNT
+}
+
+######################
+# compiler functions #
+######################
+
+function set-c-compiler () {
+  # stub - election is making me anxious
+}
+
+function set-cxx-compiler () {
+  # stub - election is making me anxious
 }
 
 ###############################################################################
