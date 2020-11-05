@@ -386,6 +386,8 @@ function main () {
   intro-text
   help-text
   set-package-manager
+  config-cmake-$SELECTED_COMPILE_ARCH
+  config-cmake-$SELECTED_COMPILE_OS
   if [[ $save =~ s ]] || [[ $save =~ S ]]
   then
 	swapfile-generic
