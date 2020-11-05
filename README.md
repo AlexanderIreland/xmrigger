@@ -45,24 +45,24 @@ cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
 ## What compilers can I use?
 Currently supported compilers are:
 1. Linux
-   * clang c/cxx
-   * edg c/cxx
-   * gcc c/cxx
-   * oracle c
+   * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
+   * edg c/cxx - Full cnn compliance
+   * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
+   * oracle c - compliant with c89, c99, c11
 2. MacOS
-   * clang c/cxx
-   * gcc c/cxx
+   * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
+   * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
 3. Windows
-   * clang c/cxx
+   * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * edg c/cxx
-   * gcc c/cxx
+   * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
    * iar c
    * visual-c++ cxx
 4. Android
-   * clang c/cxx
-   * edg c/cxx
-   * gcc c/cxx
-   * oracle c
+   * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
+   * edg c/cxx - Full cnn compliance
+   * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
+   * oracle c - compliant with c89, c99, c11
 
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
