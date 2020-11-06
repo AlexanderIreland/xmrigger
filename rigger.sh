@@ -376,8 +376,6 @@ function set-cxx-compiler () {
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_CXX_COMPILER=$CXX_COMPILER'
 }
 
-
-
 ###############################################################################
 # Main program function - put functs here so that the computer goes beep boop #
 ###############################################################################
@@ -393,7 +391,5 @@ function main () {
 	swapfile-generic
   else
 }
-
-# beep boop
 
 main
