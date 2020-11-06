@@ -224,6 +224,35 @@ function edg-install-ubuntu {
   #sudo apt-get install rose-tools # Optional: Installs ROSE tools in addition to ROSE Core
 }
 
+### Centos7 rose/edg
+#[rose-develop]
+#name = rose-rpm-repo
+#baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
+#gpgcheck = 0
+#enabled = 1
+
+#[rose-dependencies]
+#name = rose-dependencies-rpm-repo
+#baseurl = http://rosecompiler.org/uploads/repos/rhel/7/dependencies
+#gpgcheck = 0
+#enabled = 1
+
+### Centos8 rose/edg
+#[rose-develop]
+#name = rose-rpm-repo
+#baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
+#gpgcheck = 0
+#enabled = 1
+
+# sudo yum install rose
+
+### Optional rose test build:
+#git clone https://github.com/LLNL/backstroke.git
+#cd backstroke
+#make
+#sudo make install
+#make check
+
 ####################
 # Clone XMRig repo #
 ####################
@@ -247,19 +276,19 @@ function xmr-clone-repo () {
 
 # Injecting os-specific flags for cmake
 function config-cmake-alpine () { 
-  CMAKE_ARGS=$CMAKE_ARGS' 
+  CMAKE_ARGS=$CMAKE_ARGS
 }
 function config-cmake-centos7 () { 
-  CMAKE_ARGS=$CMAKE_ARGS' 
+  CMAKE_ARGS=$CMAKE_ARGS
 }
 function config-cmake-centos8 () { 
-  CMAKE_ARGS=$CMAKE_ARGS' 
+  CMAKE_ARGS=$CMAKE_ARGS
 }
 function config-cmake-fedora () { 
-  CMAKE_ARGS=$CMAKE_ARGS' 
+  CMAKE_ARGS=$CMAKE_ARGS
 }
 function config-cmake-freebsd () { 
-  CMAKE_ARGS=$CMAKE_ARGS' 
+  CMAKE_ARGS=$CMAKE_ARGS
 }
 function config-cmake-macos () { 
   CMAKE_ARGS=$CMAKE_ARGS"-DOPENSSL_ROOT_DIR=OSX_OPENSSL_DIR" 
