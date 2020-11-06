@@ -213,6 +213,17 @@ function xmrigger-packages-windows-msys2 () {
   pacman -S mingw-w64-x86_64-gcc git make
 }
 
+#####################
+# compiler installs #
+#####################
+
+function edg-install-ubuntu {
+  sudo apt-get install software-properties-common
+  sudo add-apt-repository ppa:rosecompiler/rose-development # Replace rose-development with rose-stable for release version
+  sudo apt-get install rose
+  #sudo apt-get install rose-tools # Optional: Installs ROSE tools in addition to ROSE Core
+}
+
 ####################
 # Clone XMRig repo #
 ####################
