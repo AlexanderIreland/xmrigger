@@ -230,28 +230,38 @@ function edg-install-ubuntu {
 #baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
 #gpgcheck = 0
 #enabled = 1
-
+#
 #[rose-dependencies]
 #name = rose-dependencies-rpm-repo
 #baseurl = http://rosecompiler.org/uploads/repos/rhel/7/dependencies
 #gpgcheck = 0
 #enabled = 1
-
+#
 ### Centos8 rose/edg
 #[rose-develop]
 #name = rose-rpm-repo
 #baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
 #gpgcheck = 0
 #enabled = 1
-
+#
 # sudo yum install rose
-
+#
 ### Optional rose test build:
 #git clone https://github.com/LLNL/backstroke.git
 #cd backstroke
 #make
 #sudo make install
 #make check
+
+# Clang for Ubuntu
+# 12.04 - clang
+# 14.04 - clang: 3.3, 3.4, 3.5
+# 16.04 - clang: 3.5, 3.6, 3.7, 3.8
+# 17.04 - clang: 6.0
+# 18.04 - clang: 6.0
+
+# GCC for Ubuntu
+# 18.04 - gcc-6, gcc-7, gcc-9
 
 ####################
 # Clone XMRig repo #
