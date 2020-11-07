@@ -253,15 +253,26 @@ function edg-install-ubuntu {
 #sudo make install
 #make check
 
-### Clang for Ubuntu
+### clang compatibility for Ubuntu
 # 12.04 - clang
 # 14.04 - clang: 3.3, 3.4, 3.5
-# 16.04 - clang: 3.5, 3.6, 3.7, 3.8
+# 16.04 - clang: 3.5, 3.6, 3.7, 3.8, 6.0 - noting that some users report greater success with 3.8
 # 17.04 - clang: 6.0
 # 18.04 - clang: 6.0
 
-### GCC for Ubuntu
+### gcc compatibility for Ubuntu
 # 18.04 - gcc-6, gcc-7, gcc-9
+
+### gcc + clang for Ubuntu 16.04
+# apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+# apt-get install -y clang-6.0 lld-6.0
+#
+### gcc + clang for Ubuntu 17.04
+# apt-add-repository "deb http://apt.llvm.org/artful/ llvm-toolchain-artful-6.0 main"
+# apt-get install -y clang-6.0 lld-6.0
+### gcc + clang for Ubuntu 18.04
+# apt-add-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main"
+# apt-get install -y clang-6.0 lld-6.0
 
 ### llvm for debian stretch 9
 #deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch main
