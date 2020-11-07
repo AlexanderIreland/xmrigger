@@ -253,15 +253,92 @@ function edg-install-ubuntu {
 #sudo make install
 #make check
 
-# Clang for Ubuntu
+### Clang for Ubuntu
 # 12.04 - clang
 # 14.04 - clang: 3.3, 3.4, 3.5
 # 16.04 - clang: 3.5, 3.6, 3.7, 3.8
 # 17.04 - clang: 6.0
 # 18.04 - clang: 6.0
 
-# GCC for Ubuntu
+### GCC for Ubuntu
 # 18.04 - gcc-6, gcc-7, gcc-9
+
+### llvm for debian stretch 9
+#deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch main
+#deb-src http://apt.llvm.org/stretch/ llvm-toolchain-stretch main
+# 10 
+#deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch-10 main
+#deb-src http://apt.llvm.org/stretch/ llvm-toolchain-stretch-10 main
+# 11 
+#deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch-11 main
+#deb-src http://apt.llvm.org/stretch/ llvm-toolchain-stretch-11 main
+
+### llvm for debian buster 10
+#deb http://apt.llvm.org/buster/ llvm-toolchain-buster main
+#deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster main
+# 10 
+#deb http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main
+#deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main
+# 11 
+#deb http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
+#deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
+
+### llvm for Ubuntu 16.04 xenial
+#deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main
+#deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial main
+# 10
+#deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main
+#deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial-10 main
+# 11
+#deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-11 main
+#deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial-11 main
+
+## llvm for ubuntu 18.04 bionic LTS
+# i386 not available
+#deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic main
+#deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic main
+# 10
+#deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main
+#deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main
+# 11
+#deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main
+#deb-src http://apt.llvm.org/bionic/ llvm-toolchain-bionic-11 main
+
+### llvm for ubuntu 20.04 lts
+# i386 not available
+#deb http://apt.llvm.org/focal/ llvm-toolchain-focal main
+#deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal main
+# 10
+#deb http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main
+#deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-10 main
+# 11
+#deb http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main
+#deb-src http://apt.llvm.org/focal/ llvm-toolchain-focal-11 main
+
+### llvm for ubuntu 20.10 groovy
+# i386 not available
+#deb http://apt.llvm.org/groovy/ llvm-toolchain-groovy main
+#deb-src http://apt.llvm.org/groovy/ llvm-toolchain-groovy main
+# 10
+#deb http://apt.llvm.org/groovy/ llvm-toolchain-groovy-10 main
+#deb-src http://apt.llvm.org/groovy/ llvm-toolchain-groovy-10 main
+# 11
+#deb http://apt.llvm.org/groovy/ llvm-toolchain-groovy-11 main
+#deb-src http://apt.llvm.org/groovy/ llvm-toolchain-groovy-11 main
+
+### llvm for ubuntu 21.04 Hirsute
+# i386 not available
+#deb http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute main
+#deb-src http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute main
+# 10
+#deb http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute-10 main
+#deb-src http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute-10 main
+# 11
+#deb http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute-11 main
+#deb-src http://apt.llvm.org/hirsute/ llvm-toolchain-hirsute-11 main
+
+### recommended default llvm packages
+# clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python-clang
 
 ####################
 # Clone XMRig repo #
