@@ -39,7 +39,7 @@ I would recommend [this utility](https://xmrig.com/wizard) offered by xmrig.com 
 Launching the utility can be done in shorthand like below:
 ```
 git clone https://github.com/AlexanderIreland/xmrigger
-cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -v
+cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3
 ```
 
 ## What compilers can I use?
