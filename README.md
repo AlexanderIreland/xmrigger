@@ -48,7 +48,7 @@ Currently supported compilers are:
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * edg c/cxx - Full cnn compliance
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
-   * oracle c - compliant with c89, c99, c11
+   * ~~oracle c - compliant with c89, c99, c11~~ on roadmap
 2. MacOS
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
@@ -56,13 +56,13 @@ Currently supported compilers are:
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * edg c/cxx - Full cnn compliance
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
-   * iar c
-   * visual-c++ cxx
+   * ~~iar c~~ on roadmap
+   * ~~visual-c++ cxx~~ on roadmap
 4. Android
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * edg c/cxx - Full cnn compliance
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
-   * oracle c - compliant with c89, c99, c11
+   * ~~oracle c - compliant with c89, c99, c11~~ on roadmap
 
 Flag mapping:
   - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
