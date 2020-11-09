@@ -70,3 +70,4 @@ Flag mapping:
   - o: declares OS - Currently manual but auto-detect is coming
   - s: declares the swap file dir
   - S: declares the swap file size in G, only digits required
+  - v: forces cmake to output verbose logging to stdout
