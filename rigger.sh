@@ -122,13 +122,15 @@ function help-text () {
 # launch flag support #
 #######################
 
-while getopts a:c:cxx:o:s:S:v: flag
+while getopts a:c:cxx:o:pb:ps:s:S:v: flag
 do
     case "${flag}" in
         a) SELECTED_COMPILE_ARCH=${OPTARG};;
 	c) SELECTED_C_COMPILER=${OPTARG};;
 	cxx) SELECTED_CXX_COMPILER=${OPTARG};;
         o) SELECTED_COMPILE_OS=${OPTARG};;
+	pb) RUN_POST_RIG_BASIC=true;;
+	ps) RUN_POST_RIG_SILENT=true;;
         s) SWAP_FILE_DIR_LINUX_GENERIC=${OPTARG};;
         S) SWAP_FILE_SIZE="${OPTARG}G";;
         v) CMAKE_ARGS="$CMAKE_ARGS -v";; # verbose cmake for troubleshooting
@@ -548,6 +550,13 @@ function main () {
   then
 	swapfile-generic
   else
+  if [[ $save =~ pb ]]
+  then
+    post-rig.sh -bs #basic start
+  elif [[ $save =~ ps ]]
+  then
+    post-rig.sh -ss #silent start - starts in a detatched screen, has dependency on screen
+  fi
 }
 
 main
