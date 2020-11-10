@@ -19,7 +19,7 @@ function intro-text () {
   echo "${CYAN}+---------------------------------------------------------+"
 }
 
-while getopts a:o:s:S:v: flag
+while getopts bs:ss: flag
 do
     case "${flag}" in
         bs) BASIC_START=true;;
