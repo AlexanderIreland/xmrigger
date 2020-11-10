@@ -48,6 +48,8 @@ Flag mapping:
   - c: declares C compiler to be used
   - cxx: declares CXX compiler to be used
   - o: declares OS - Currently manual but auto-detect is coming
+  - pb: triggers a post-build action - basic xmrig start
+  - ps: triggers a post-build action - silent xmrig start - starts xmrig in a detatched screen, screen -ls to show the screen
   - s: declares the swap file dir
   - S: declares the swap file size in G, only digits required
   - v: forces cmake to output verbose logging to stdout
