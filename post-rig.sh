@@ -21,10 +21,10 @@ function intro-text () {
 
 while getopts bs:ss: flag
 do
-    case "${flag}" in
-        bs) BASIC_START=true;;
-	      ss) SILENT_START=true;;
-    esac
+  case "${flag}" in
+    bs) BASIC_START=true;;
+    ss) SILENT_START=true;;
+  esac
 done
 
 
