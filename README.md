@@ -42,13 +42,23 @@ git clone https://github.com/AlexanderIreland/xmrigger
 cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3
 ```
 
+Flag mapping:
+  - a: declares CPU architecture - Currently supporting arm, x86, x64 and x96
+    - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
+  - c: declares C compiler to be used
+  - cxx: declares CXX compiler to be used
+  - o: declares OS - Currently manual but auto-detect is coming
+  - s: declares the swap file dir
+  - S: declares the swap file size in G, only digits required
+  - v: forces cmake to output verbose logging to stdout
+
 ## What compilers can I use?
 Currently supported compilers are:
 1. Linux
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * edg c/cxx - Full cnn compliance
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
-   * ~~oracle c - compliant with c89, c99, c11~~ on roadmap
+   * ~~oracle c - compliant with c89, c99, c11~~ on roadmap - ETA TBD
 2. MacOS
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
@@ -57,17 +67,9 @@ Currently supported compilers are:
    * edg c/cxx - Full cnn compliance
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
    * ~~iar c~~ on roadmap
-   * ~~visual-c++ cxx~~ on roadmap
+   * ~~visual-c++ cxx~~ on roadmap - ETA TBD
 4. Android
    * clang c/cxx - Full compliance with c89, c99, partial with c11, c18
    * edg c/cxx - Full cnn compliance
    * gcc c/cxx - Full compliance with c89, partial with c99, c11 and c18
-   * ~~oracle c - compliant with c89, c99, c11~~ on roadmap
-
-Flag mapping:
-  - a: declared CPU architecture - Currently supporting arm, x86, x64 and x96
-    - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
-  - o: declares OS - Currently manual but auto-detect is coming
-  - s: declares the swap file dir
-  - S: declares the swap file size in G, only digits required
-  - v: forces cmake to output verbose logging to stdout
+   * ~~oracle c - compliant with c89, c99, c11~~ on roadmap - ETA TBD
