@@ -64,8 +64,10 @@ MSYS_CMAKE_DIR="c:\Program Files\CMake\bin\cmake.exe" #default, may req escapes
 MSYS_GCC_64_DIR="c:/xmrig-deps/gcc/x64" #default
 OSX_OPENSSL_DIR="/usr/local/opt/openssl"
 PACKAGE_MANAGER=""
+SELECTED_C_COMPILER="gcc"
 SELECTED_COMPILE_ARCH=""
 SELECTED_COMPILE_OS=""
+SELECTED_CXX_COMPILER="gcc"
 SWAP_FILE_DIR_LINUX_GENERIC="/paging-xmrigger"
 SWAP_FILE_SIZE="3G"
 XMRIG_DIR="/opt"
@@ -107,6 +109,8 @@ function help-text () {
   echo "${CYAN}+------------------------------------------------------------+"
   echo "${CYAN}See below for the full list of flags available and their usage - all flag arguments are lowercase"
   echo "${LGREEN}-a ${LGREEN}-${LCYAN} Defines the CPU architecture, options available are:{$MAGENTA} arm7, arm8, x86, x64${RESTORE}"
+  echo "${LGREEN}-c ${LGREEN}-${LCYAN} Sets the c compiler, defaults to gcc for wider system support{RESTORE}"
+  echo "${LGREEN}-cxx ${LGREEN}-${LCYAN} Sets the cxx compiler, defaults to gcc for wider system support{RESTORE}"
   echo "${LGREEN}-o ${LGREEN}-${LCYAN} Defines the OS, options available are:{$MAGENTA}  alpine, arch, centos7, centos8, fedora, freebsd, manjaro, ubuntu, macos, win10-msys2 and win10-vs2019${RESTORE}"
   echo "${LGREEN}-s ${LGREEN}-${LCYAN} Defines the swap file directory if required - this is recommended for systems with <2G of memory as compiling usually will occupy more than 2G even without loading a desktop environment${RESTORE}"
   echo "${LGREEN}-S ${LGREEN}-${LCYAN} Sets the size of the swap file, only accepts ints (whole numbers, no decimal places){RESTORE}"
@@ -118,10 +122,12 @@ function help-text () {
 # launch flag support #
 #######################
 
-while getopts a:o:s:S:v: flag
+while getopts a:c:cxx:o:s:S:v: flag
 do
     case "${flag}" in
         a) SELECTED_COMPILE_ARCH=${OPTARG};;
+	c) SELECTED_C_COMPILER=${OPTARG};;
+	cxx) SELECTED_CXX_COMPILER=${OPTARG};;
         o) SELECTED_COMPILE_OS=${OPTARG};;
         s) SWAP_FILE_DIR_LINUX_GENERIC=${OPTARG};;
         S) SWAP_FILE_SIZE="${OPTARG}G";;
@@ -439,6 +445,18 @@ function config-cmake-osx-96 () {
   CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_OSX_ARCHITECTURES=x86_64;i386' 
 }
 
+#########################################
+# setting compilers for cmake execution #
+#########################################
+
+function set-cmake-c-compiler () {
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_C_COMPILER=$SELECTED_C_COMPILER'
+}
+
+function set-cmake-cxx-compiler () {
+  CMAKE_ARGS=$CMAKE_ARGS' -DCMAKE_CXX_COMPILER=$SELECTED_CXX_COMPILER'
+}
+
 ##########################
 # Cmake execution - pray #
 ##########################
@@ -524,6 +542,8 @@ function main () {
   set-package-manager
   config-cmake-$SELECTED_COMPILE_ARCH
   config-cmake-$SELECTED_COMPILE_OS
+  set-cmake-c-compiler
+  set-cmake-cxx-compiler
   if [[ $save =~ s ]] || [[ $save =~ S ]]
   then
 	swapfile-generic
