@@ -55,6 +55,7 @@
 # Load vars
 CMAKE_ARGS=""
 C_COMPILER="gcc" #gcc is the default and usually fine
+CONFIG_FILE=""
 CUDA_TOOLKIT_DIR="c:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.0" #default - bless fwdslash
 CXX_COMPILER="gcc" #gcc is the default and usually fine
 MAKE_CORE_COUNT=1
@@ -122,11 +123,12 @@ function help-text () {
 # launch flag support #
 #######################
 
-while getopts a:c:cxx:o:pb:ps:s:S:v: flag
+while getopts a:c:conf:cxx:o:pb:ps:s:S:v: flag
 do
     case "${flag}" in
         a) SELECTED_COMPILE_ARCH=${OPTARG};;
 	c) SELECTED_C_COMPILER=${OPTARG};;
+	conf) CONFIG_FILE=${OPTARG};;
 	cxx) SELECTED_CXX_COMPILER=${OPTARG};;
         o) SELECTED_COMPILE_OS=${OPTARG};;
 	pb) RUN_POST_RIG_BASIC=true;;
@@ -136,17 +138,6 @@ do
         v) CMAKE_ARGS="$CMAKE_ARGS -v";; # verbose cmake for troubleshooting
     esac
 done
-
-######################################################################################################
-# Main function that can handle build with flags - currently only requires -o for OS and -a for arch #
-######################################################################################################
-
-function main-compile-funct-template () {
-  # Providing an alternative shorthand to menu navigation
-  xmr-clone-repo-clean
-  xmrigger-packages-$SELECTED_COMPILE_OS
-  config-cmake-$SELECTED_COMPILE_ARCH
-}
 
 #################################################
 # Configure swap file for low-mem Linux systems #
@@ -522,6 +513,14 @@ function set-package-manager () {
   fi
 }
 
+#####################################
+# copy config.json into working dir #
+#####################################
+
+function configure-profile () {
+  echo "stub for now"
+}
+
 ######################
 # compiler functions #
 ######################
@@ -550,6 +549,7 @@ function main () {
   then
 	swapfile-generic
   else
+  configure-profile
   if [[ $save =~ pb ]]
   then
     post-rig.sh -bs #basic start
