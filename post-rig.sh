@@ -42,7 +42,7 @@ function main () {
   intro-text
   if [[ BASIC_START==true ]]
   then
-	  start-miner-basic
+    start-miner-basic
   else
   start-miner-silent
 }
