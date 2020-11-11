@@ -1,7 +1,7 @@
 #!/bin/bash
 #todo:
-# 1) Do away with wallet file, move to complete config generator - use sed to insert values where necessary
-# 2) Ask config options
+# done 1) Do away with wallet file, move to complete config generator - use sed to insert values where necessary
+# relegated 2) Ask config options
 # 3) Gather prerequisites based on OS
 #  3.a) Centos7: epel-release git make cmake gcc gcc-c++ libstdc++-static libuv-static hwloc-devel openssl-devel
 #  3.b) Centos8: git make cmake gcc gcc-c++ libstdc++-static hwloc-devel openssl-devel automake libtool autoconf
@@ -11,9 +11,9 @@
 #  3.f) MacOS: cmake libuv openssl hwloc
 #  3.g) Ubuntu: git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 #  3.h) Windows: mingw-w64-x86_64-gcc git make
-# 4) Pull latest: https://github.com/xmrig/xmrig.git
-# 5) Create build dir
-# 6) Configure cmake opts
+# done 4) Pull latest: https://github.com/xmrig/xmrig.git
+# done 5) Create build dir
+# partially done 6) Configure cmake opts
 #  6.a) CPU arch support
 #   6.a.1) arm64: -DCMAKE_SYSTEM_PROCESSOR=arm
 #  6.b) Platform support
@@ -30,12 +30,12 @@
 #     cmake --build . --config Release
 #   6.b.4) WindowsPhone: -DCMAKE_SYSTEM_NAME=WindowsPhone -DCMAKE_SYSTEM_VERSION=8.1
 #   6.b.5) Tegra/Android: -DCMAKE_SYSTEM_NAME=Android
-# 7) Configure make opts 
+# done 7) Configure make opts 
 #  7.a) Alpine, Centos, Fedora, Ubuntu, Windows: make -j$(nproc)
 #  7.b) FreeBSD: make -j$(sysctl -n hw.ncpu)
 #  7.c) MacOS: make -j$(sysctl -n hw.logicalcpu)
-# 8) Configure page files for low-mem systems
-# 9) Configure compilers - initial pre-revision list
+# done 8) Configure page files for low-mem systems
+# partially done 9) Configure compilers - initial pre-revision list
 #  9.a) C compilers
 #   9.a.1) Full Cnn compliance compilers
 #    9.a.1.a) EDG - Win, Unix, Android, RISC
@@ -49,8 +49,8 @@
 #    9.b.1.a) Clang - Partial/Most Win, Unix, Android, RISC
 #    9.b.1.b) EDG - Win, Unix, Android, RISC
 #    9.b.1.c) Visual C++ - Win, Unix-Like, Android
-#  10) Noting that some arm systems have issues with caching on certain versions of GCC - known-good version is gcc-8.3.0
-#  11) Create independent arm7 and arm8 build options, both need independent cmake opts
+# 10) Noting that some arm systems have issues with caching on certain versions of GCC - known-good version is gcc-8.3.0
+# done 11) Create independent arm7 and arm8 build options, both need independent cmake opts
 
 # Load vars
 CMAKE_ARGS=""
