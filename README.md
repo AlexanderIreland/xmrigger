@@ -36,13 +36,14 @@ I would recommend [this utility](https://xmrig.com/wizard) offered by xmrig.com 
 Launching the utility can be done in shorthand like below:
 ```
 git clone https://github.com/AlexanderIreland/xmrigger
-cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3
+cd xmrigger && chmod +x xmrigger && ./xmrigger -a arm -o ubuntu -s /swap -S 3 -conf /opt/xmrig/build/config.json
 ```
 
 Flag mapping:
   - a: declares CPU architecture - Currently supporting arm, x86, x64 and x96
     - For any other RISC architecture, default to arm - this includes variants of arm and arm BIG.little
   - c: declares C compiler to be used
+  - conf: declares the config.json file to be used
   - cxx: declares CXX compiler to be used
   - o: declares OS - Currently manual but auto-detect is coming
   - pb: triggers a post-build action - basic xmrig start
