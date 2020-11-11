@@ -518,7 +518,10 @@ function set-package-manager () {
 #####################################
 
 function configure-profile () {
-  echo "stub for now"
+  cp $CONFIG_FILE $XMRIG_DIR/xmrig/build/
+  echo ""
+  echo "# config file loaded from $CONFIG_FILE" #
+  echo ""
 }
 
 ######################
