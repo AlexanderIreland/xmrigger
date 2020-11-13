@@ -56,9 +56,9 @@ Flag mapping:
 Currently supported compilers are: 
 || clang ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) | edg/rose ![#1abc9c](https://via.placeholder.com/15/1abc9c/000000?text=+) | gcc ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) | iar ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) | oracle c ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) | visual c++ ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|
-|Android|✓|✓|✓|✘|✓|✘|
+|Android|✓|✘|✓|✘|✓|✘|
 |MacOS|✓|✘|✓|✘|✘|✘|
 |Linux|✓|✓|✓|✘|✓|✘|
-|Windows|✓|✓|✓|✓|✓|✓|
+|Windows|✓|✘|✓|✓|✓|✓|
 
 key: ![#1abc9c](https://via.placeholder.com/15/1abc9c/000000?text=+) = full cnn compliance ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) = partial cnn compliance
