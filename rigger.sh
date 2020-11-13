@@ -238,18 +238,21 @@ function edg-install-centos7 () {
   enabled = 1
   " > /etc/yum.repos.d/rose.repo
   yum update
-  yum install rose
+  yum install rose -y
 }
 
-### Centos8 rose/edg
-#[rose-develop]
-#name = rose-rpm-repo
-#baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
-#gpgcheck = 0
-#enabled = 1
-#
-# sudo yum install rose
-#
+function edg-install-centos7 () {
+  echo "
+  [rose-develop]
+  name = rose-rpm-repo
+  baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
+  gpgcheck = 0
+  enabled = 1
+  " > /etc/yum.repos.d/rose.repo
+  yum update
+  yum install rose -y
+}
+
 ### Optional rose test build:
 #git clone https://github.com/LLNL/backstroke.git
 #cd backstroke
