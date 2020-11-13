@@ -216,26 +216,31 @@ function xmrigger-packages-windows-msys2 () {
 # compiler installs #
 #####################
 
-function edg-install-ubuntu {
+function edg-install-ubuntu () {
   sudo apt-get install software-properties-common
   sudo add-apt-repository ppa:rosecompiler/rose-development # Replace rose-development with rose-stable for release version
   sudo apt-get install rose
   #sudo apt-get install rose-tools # Optional: Installs ROSE tools in addition to ROSE Core
 }
 
-### Centos7 rose/edg
-#[rose-develop]
-#name = rose-rpm-repo
-#baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
-#gpgcheck = 0
-#enabled = 1
-#
-#[rose-dependencies]
-#name = rose-dependencies-rpm-repo
-#baseurl = http://rosecompiler.org/uploads/repos/rhel/7/dependencies
-#gpgcheck = 0
-#enabled = 1
-#
+function edg-install-centos7 () {
+  echo "
+  [rose-develop]
+  name = rose-rpm-repo
+  baseurl = http://rosecompiler.org/uploads/repos/rhel/7/develop
+  gpgcheck = 0
+  enabled = 1
+
+  [rose-dependencies]
+  name = rose-dependencies-rpm-repo
+  baseurl = http://rosecompiler.org/uploads/repos/rhel/7/dependencies
+  gpgcheck = 0
+  enabled = 1
+  " > /etc/yum.repos.d/rose.repo
+  yum update
+  yum install rose
+}
+
 ### Centos8 rose/edg
 #[rose-develop]
 #name = rose-rpm-repo
