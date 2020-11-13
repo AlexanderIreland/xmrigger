@@ -253,6 +253,17 @@ function edg-install-centos7 () {
   yum install rose -y
 }
 
+function gcc-install-hp-ux () {
+	swinstall autoconf bison db flex gawk gdbm gettext libiconv m4 make perl sed tcltk termcap texinfo wget zip zlib
+	cd /tmp && wget http://hpux.connect.org.uk/hppd/cgi-bin/search?package=&term=/gcc- && cd gcc
+	# needs fleshing out, is an obscure system that I'll get back to later
+}
+
+function gcc-install-macos () {
+	# brew is a prerequisite - doesn't have to be but it's easier and cleaner this way
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	brew install gcc
+}
 ### Optional rose test build:
 #git clone https://github.com/LLNL/backstroke.git
 #cd backstroke
