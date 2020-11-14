@@ -62,3 +62,7 @@ Currently supported compilers are:
 |Windows|✓|✘|✓|✓|✓|✓|
 
 key: ![#1abc9c](https://via.placeholder.com/15/1abc9c/000000?text=+) = full cnn compliance ![#f1c40f](https://via.placeholder.com/15/f1c40f/000000?text=+) = partial cnn compliance
+
+Roadmap:
+- generate service
+- complete compiler installs
