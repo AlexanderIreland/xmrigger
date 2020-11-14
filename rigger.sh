@@ -369,6 +369,29 @@ function gcc-install-macos () {
 ### recommended default llvm packages
 # clang-format clang-tidy clang-tools clang clangd libc++-dev libc++1 libc++abi-dev libc++abi1 libclang-dev libclang1 liblldb-dev libllvm-ocaml-dev libomp-dev libomp5 lld lldb llvm-dev llvm-runtime llvm python-clang
 
+##########################
+# Create service options #
+##########################
+
+# CentOS =<6 - service, CentOS =>7 init
+# Service loc: /etc/systemd/system/xmrig.service
+
+# broad example:
+#[Unit]
+#Description=xmrig
+#[Service]
+#User=root
+#WorkingDirectory=$XMRIG_DIR/xmrig/build
+##path to executable. 
+##executable is a bash script which calls jar file
+#ExecStart=$XMRIG_DIR/xmrig/build/xmrig
+#SuccessExitStatus=143
+#TimeoutStopSec=10
+#Restart=on-failure
+#RestartSec=5
+#[Install]
+#WantedBy=multi-user.target
+
 ####################
 # Clone XMRig repo #
 ####################
