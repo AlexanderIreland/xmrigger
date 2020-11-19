@@ -508,11 +508,11 @@ function set-package-manager () {
 #####################################
 
 function configure-profile () {
-  cp $CONFIG_FILE $XMRIG_DIR/xmrig/build/
+  cp $CONFIG_FILE $XMRIG_DIR/xmrig/build/ 
   echo ""
   echo "# config file loaded from $CONFIG_FILE" #
   echo ""
-}
+} # this function doesn't actually create a json file, it just copies it to where it needs to go
 
 ######################
 # compiler functions #
