@@ -27,6 +27,28 @@ do
   esac
 done
 
+##########################
+# Create service options #
+##########################
+
+# CentOS =<6 - service, CentOS =>7 init
+# Service loc: /etc/systemd/system/xmrig.service
+
+# broad example:
+#[Unit]
+#Description=xmrig
+#[Service]
+#User=root
+#WorkingDirectory=$XMRIG_DIR/xmrig/build
+##path to executable. 
+##executable is a bash script which calls jar file
+#ExecStart=$XMRIG_DIR/xmrig/build/xmrig
+#SuccessExitStatus=143
+#TimeoutStopSec=10
+#Restart=on-failure
+#RestartSec=5
+#[Install]
+#WantedBy=multi-user.target
 
 function start-miner-basic () {
   echo "I'm a stub function"
