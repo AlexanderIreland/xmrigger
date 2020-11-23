@@ -474,7 +474,7 @@ function set-package-manager () {
   elif [[ $SELECTED_COMPILE_OS=="macos" ]]
     PACKAGE_MANAGER="brew"
   then
-  elif [[ $SELECTED_COMPILE_OS=="ubuuntu" ]]
+  elif [[ $SELECTED_COMPILE_OS=="ubuntu" ]]
   then
     PACKAGE_MANAGER="apt-get"
   fi
