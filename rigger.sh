@@ -527,6 +527,7 @@ function main () {
   then
     post-rig.sh -ss #silent start - starts in a detatched screen, has dependency on screen
   fi
+  fi
 }
 
 main
